@@ -2,7 +2,7 @@ using System;
 using System.Data;
 using System.Text;
 
-namespace CompanyDB
+namespace CSharpUtils
 {
     public static partial class Extensions
     {
