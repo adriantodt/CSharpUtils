@@ -1,6 +1,6 @@
 using System.Reflection;
 
-namespace CompanyDB
+namespace CSharpUtils
 {
     public static class MapSerializor
     {
