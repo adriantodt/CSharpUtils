@@ -68,6 +68,24 @@ namespace CSharpUtils
                 return ent.Value;
             return default(V);
         }
+        
+        public override void Replace(Func<K, V, V> function)
+        {
+            Entry ent = null;
+            for (ent = buckets[0]; ent != null; ent = ent.Next)
+            {
+                ent.Value = function(ent.Key,ent.Value);
+            }
+        }
+
+        public override void ForEach(Action<K, V> action)
+        {
+            Entry ent = null;
+            for (ent = buckets[0]; ent != null; ent = ent.Next)
+            {
+                action(ent.Key,ent.Value);
+            }
+        }
 
         public override void Remove(K key)
         {
