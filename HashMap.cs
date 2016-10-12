@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace CSharpUtils
 {
@@ -17,13 +19,9 @@ namespace CSharpUtils
         private Entry[] buckets;
         private int count;
 
-        public override int Count
-        {
-            get
-            {
-                return count;
-            }
-        }
+        public override int Count { get { return count; } }
+        public override List<K> Keys { get { return (from bucket in buckets select bucket.Key).ToList(); } }
+        public override List<V> Values { get { return (from bucket in buckets select bucket.Value).ToList(); } }
 
         public HashMap() : this(MIN_CAPACITY) { }
 
