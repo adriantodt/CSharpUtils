@@ -1,3 +1,5 @@
+using System;
+
 namespace CSharpUtils
 {
     public class HashMap<K, V> : Map<K, V>
@@ -14,6 +16,14 @@ namespace CSharpUtils
 
         private Entry[] buckets;
         private int count;
+
+        public override int Count
+        {
+            get
+            {
+                return count;
+            }
+        }
 
         public HashMap() : this(MIN_CAPACITY) { }
 
