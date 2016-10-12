@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace CSharpUtils
 {
@@ -11,5 +12,7 @@ namespace CSharpUtils
         public abstract void Replace(Func<K, V, V> function);
         public abstract void ForEach(Action<K, V> action);
         public abstract int Count { get; }
+        public abstract List<K> Keys { get; }
+        public abstract List<V> Values { get; }
     }
 }
