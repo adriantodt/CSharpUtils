@@ -8,23 +8,21 @@ namespace CSharpUtils
         {
             Map<string,object> map = new HashMap<string, object>();
 
-            FieldInfo[] methods = obj.GetType().GetFields(BindingFlags.Static | BindingFlags.Public);
+            FieldInfo[] methods = typeof(T).GetFields(BindingFlags.Static | BindingFlags.Public);
             foreach (var method in methods)
             {
-                map.Put(method.Name, method.GetValue(obj));
+                map.Put(method.Name, method.GetValue(null));
             }
             return map;
         }
 
-        public static T FromHashMapStatic<T>(this Map<string, object> map) where T : class
+        public static void FromHashMapStatic<T>(this Map<string, object> map) where T : class
         {
-            FieldInfo[] methods = obj.GetType().GetFields(BindingFlags.Static | BindingFlags.Public);
+            FieldInfo[] methods = typeof(T).GetFields(BindingFlags.Static | BindingFlags.Public);
             foreach (var method in methods)
             {
-                if (map.ContainsKey(method.Name)) method.SetValue(obj, map.Get(method.Name));
+                if (map.ContainsKey(method.Name)) method.SetValue(null, map.Get(method.Name));
             }
-
-            return obj;
         }
         
         public static Map<string,object> ToHashMap<T>(this T obj) where T : class
