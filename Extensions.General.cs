@@ -33,5 +33,12 @@ namespace CSharpUtils
         {
             return obj.As<T>() != null;
         }
+
+        public static Map<V, K> Reverse<K, V>(this Map<K, V> map)
+        {
+            HashMap<V, K> r = new HashMap<V, K>();
+            map.ForEach((k, v) => r.Put(v, k));
+            return r;
+        }
     }
 }
