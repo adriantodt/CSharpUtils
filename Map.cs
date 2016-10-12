@@ -1,3 +1,5 @@
+using System;
+
 namespace CSharpUtils
 {
     public abstract class Map<K, V>
@@ -8,5 +10,6 @@ namespace CSharpUtils
         public abstract bool ContainsKey(K key);
         public abstract void Replace(Func<K, V, V> function);
         public abstract void ForEach(Action<K, V> action);
+        public abstract int Count { get; }
     }
 }
